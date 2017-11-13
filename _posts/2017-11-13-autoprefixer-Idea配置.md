@@ -4,7 +4,7 @@ title:      Mac 下 autoprefixer配置
 subtitle:    Mac 下 autoprefixer配置
 date:       2017-11-13
 author:     hdj
-header-img: img/home-bg-0.jpg
+header-img: img/2017-11/idea-bg.jpg
 catalog: true
 tags:
     - autoprefixer配置
