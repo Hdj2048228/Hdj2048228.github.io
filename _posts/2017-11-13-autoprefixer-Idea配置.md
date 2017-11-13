@@ -50,6 +50,7 @@ Autoprefixer其实是postcss的插件，见[postcss-cli gitHub](https://github.c
 ![idea-autoprefixers](http://hedj.top/img/2017-11/idea-autoprefixers.png)
 
 Program:填入你的postcss-cli 的PATH，下面是我的文件路径
+
 ```
  /usr/local/bin/postcss
 ```
