@@ -88,8 +88,15 @@ featured-condition-size: 1              # 相同标签数量大于这个数，�
 # Progressive Web Apps
 chrome-tab-theme-color: "#000000"
 service-worker: true
-
-
+#
+#gitment:{
+#            owner: 'Hdj2048228',
+#                repo: 'https://github.com/Hdj2048228/Hdj2048228.github.io',
+#                oauth: {
+#                    client_id: 'b8cffcac043190b3c5dc',
+#                    client_secret: '0aac0440113f4d964b9afcf16ffc6fa3e989ab0c'
+#                }
+#            }
 
 # Friends
 friends: [
