@@ -97,7 +97,11 @@ service-worker: true
 #                    client_secret: '0aac0440113f4d964b9afcf16ffc6fa3e989ab0c'
 #                }
 #            }
-
+#gitment
+github_username:  Hdj2048228
+comment_gitment_repo: hdj2048228.github.io
+comment_gitment_clientId: b8cffcac043190b3c5dc
+comment_gitment_clientSecret: 0aac0440113f4d964b9afcf16ffc6fa3e989ab0c
 # Friends
 friends: [
     {
