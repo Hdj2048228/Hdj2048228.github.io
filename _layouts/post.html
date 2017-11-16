@@ -186,22 +186,22 @@ layout: default
         </div>
     </div>
 </article>
-{% if site.comment_gitment_repo %}
-<div id="gitmentContainer"></div>
-<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-<script>
-    var gitment = new Gitment({
-        owner: '{{site.github_username}}',
-        repo: '{{site.comment_gitment_repo}}',
-        oauth: {
-            client_id: '{{site.comment_gitment_clientId}}',
-            client_secret: '{{site.comment_gitment_clientSecret}}',
-        },
-    });
-    gitment.render('gitmentContainer')
-</script>
-{% endif %}
+<!--{% if site.comment_gitment_repo %}-->
+<!--<div id="gitmentContainer"></div>-->
+<!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+<!--<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>-->
+<!--<script>-->
+    <!--var gitment = new Gitment({-->
+        <!--owner: '{{site.github_username}}',-->
+        <!--repo: '{{site.comment_gitment_repo}}',-->
+        <!--oauth: {-->
+            <!--client_id: '{{site.comment_gitment_clientId}}',-->
+            <!--client_secret: '{{site.comment_gitment_clientSecret}}',-->
+        <!--},-->
+    <!--});-->
+    <!--gitment.render('gitmentContainer')-->
+<!--</script>-->
+<!--{% endif %}-->
 
 {% if site.duoshuo_username %}
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
