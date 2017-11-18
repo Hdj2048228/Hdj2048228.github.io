@@ -13,20 +13,6 @@ tags:
 # 前言
 
   一直不太懂copy 和mutable的区别，自从看了下面的文章，瞬间明悟了
-  [Unit]
-  Description=Neo4j Service
-  After=network.target
-  
-  [Service]
-  Type=forking
-  ExecStart=/soft/neo4j-community-3.3.0/bin/neo4j start
-  ExecReload=/soft/neo4j-community-3.3.0/bin/neo4j restart
-  ExecStop=/soft/neo4j-community-3.3.0/bin/neo4j stop
-  RestartSec=10
-  
-  [Install]
-  WantedBy=multi-user.target
-
 
 [OC中的copy](http://www.jianshu.com/p/5f776a4816ee)
 
