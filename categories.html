@@ -1,0 +1,42 @@
+---
+layout: page
+title: "分类"
+description: "Hey, this is dj."
+header-img: "img/post-bg-rwd.jpg"
+---
+<div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+
+        <div class="category-all-page">
+            <div class="category-all-title">
+                目前共计 {{site.categories | size}} 个分类
+            </div>
+            <div class="category-all">
+                <ul class="category-list">
+                    {% for category in site.categories order:ascending %}
+                    <li class="category-list-item">
+                        <a class="category-list-link" href="#">{{ category | first}}</a>
+                        <span class="category-list-count">{{ category | last | size }}</span>
+                        <ul class="category-list-child">
+                            {% for post in category.last %}
+                            <li class="category-list-item"><a class="category-list-link"
+                                                              href="{{ post.url }}">{{ post.title }}</a>
+                                <!--<span-->
+                                        <!--class="category-list-count"> count</span>-->
+                            </li>
+                            {% endfor %}
+
+                        </ul>
+
+                    </li>
+                    {% endfor %}
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+

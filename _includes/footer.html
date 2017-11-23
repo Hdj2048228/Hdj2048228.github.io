@@ -20,7 +20,7 @@
                                 <a target="_blank" href="https://www.jianshu.com/u/{{ site.jianshu_username }}">
                                     <span class="fa-stack fa-lg">
                                         <i class="fa fa-circle fa-stack-2x"></i>
-                                        <i class="fa  fa-stack-1x fa-inverse">简</i>
+                                        <i class="fa  fa-stack-1x fa-inverse">简书</i>
                                     </span>
                                 </a>
                             </li>
@@ -172,6 +172,11 @@
             $('#tag_cloud a').tagcloud();
         })
     }
+</script>
+<script type="text/javascript" src="{{ "/js/velocity.min.js " | prepend: site.baseurl }}"></script>
+<!-- archive-->
+<script type="text/javascript" id="motion.page.archive">
+    $('.archive-year').velocity('transition.slideLeftIn');
 </script>
 
 <!--fastClick.js -->

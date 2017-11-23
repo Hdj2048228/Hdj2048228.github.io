@@ -1,0 +1,60 @@
+---
+layout: page
+title: "归档"
+---
+
+<div id="content" class="content">
+    <section id="posts" class="posts-collapse">
+        <span class="archive-move-on"></span>
+
+        <span class="archive-page-counter">
+
+      好! 目前共计 {{site.posts | size }} 篇日志。 继续努力。
+    </span>
+        {% for post in site.posts limit 100 %}
+        {% unless post.next %}
+        <div class="collection-title">
+            <h2 class="archive-year motion-element" id="archive-year"
+                style="opacity: 1; display: block; transform: translateX(0px);"> {{ post.date | date: '%Y'}}</h2>
+        </div>
+        {% else %} {% capture year %}{{ post.date | date: '%Y' }}{% endcapture %}
+        {% capture nyear %}{{ post.next.date | date: '%Y' }}{% endcapture %}
+        {% if year != nyear %}
+        <div class="collection-title">
+            <h2 class="archive-year motion-element" id="archive-year-{{year}}"
+                style="opacity: 1; display: block; transform: translateX(0px);"> {{ post.date | date: '%Y'}}</h2>
+        </div>
+        {% endif %}
+        <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article"
+                 style="opacity: 1;     overflow-x: inherit;
+ display: block; transform: translateY(0px);">
+
+            <header class="post-header">
+                <h2 class="post-title">
+
+                    <a class="post-title-link" href="{{post.url}}" itemprop="url">
+
+                        <span itemprop="name">{{ post.title }}</span>
+
+                    </a>
+
+                </h2>
+                {% capture day %}{{ post.date | date: '%d' }}{% endcapture %}
+                {% capture month %}{{ post.date | date: '%m' }}{% endcapture %}
+
+                <div class="post-meta">
+                    <time class="post-time" itemprop="dateCreated" datetime="{{post.date}} "
+                          content="{{ post.date | date_to_string}}">
+                        {{month}}-{{day}}
+                    </time>
+                </div>
+            </header>
+        </article>
+
+        {% endunless %}
+        {% endfor %}
+
+
+    </section>
+
+</div>
