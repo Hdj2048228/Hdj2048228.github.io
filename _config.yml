@@ -11,7 +11,7 @@ github_repo: "https://github.com/Hdj2048228/hedj.github.io.git" # you code repos
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "我要从iOS转到全栈工程师!"
+sidebar-about-description: "如果我是DJ你会爱我吗!"
 sidebar-avatar: /img/dj-icon.jpeg      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
