@@ -1,4 +1,4 @@
-# BY Blog
+# DJ Blog
 
 > 下面是博客的搭建教程，这个教程修改自 [Hux](https://github.com/Huxpro/huxpro.github.io) 。
 > 
@@ -141,8 +141,8 @@ featured-condition-size: 1     # A tag will be featured if the size of it is mor
 # Friends
 friends: [
     {
-        title: "BY Blog",
-        href: "https://qiubaiying.github.io/"
+        title: "DJ Blog",
+        href: "https://hdj2048228.github.io/"
     },
     {
         title: "Apple",
