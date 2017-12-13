@@ -3,10 +3,10 @@ layout:     post
 title:      Xcode Debug 大全
 subtitle:   iOS开发中利用 Xcode 各种调试Bug方法
 date:       2016-10-18
-author:     BY
+author:     hdj
 header-img: img/post-bg-ios9-web.jpg
 catalog: true
-categories : [iOS, reprints]
+categories : [iOS]
 
 tags:
     - iOS
