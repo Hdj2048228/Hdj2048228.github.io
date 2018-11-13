@@ -1643,4 +1643,4 @@ window.particlesJS.load = function(tag_id, path_config_json, callback){
     }
 
 };
-window.particlesJS.load('loadparticles-js',params);
+window.particlesJS.load('particles-js',params);
