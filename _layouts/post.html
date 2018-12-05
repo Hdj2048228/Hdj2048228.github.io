@@ -72,8 +72,8 @@ layout: default
                     data-images="{{ site.url }}{{site.baseurl}}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}"
                     data-content="{{ content | strip_html | truncate:80 }} | {{ site.SEOTitle }} " >
                     <div class="ds-share-inline">
-                      <style> 
-                        .ds-share-icons-16 {display:none;} 
+                      <style>
+                        .ds-share-icons-16 {display:none;}
                       </style>
                       <ul class="ds-share-icons-16">
                         <li data-toggle="ds-share-icons-more"><a class="ds-more" href="#">分享到：</a></li>
@@ -130,7 +130,7 @@ layout: default
                 <!-- disqus 评论框 end -->
                 {% endif %}
 
-            </div>  
+            </div>
 
     <!-- Side Catalog Container -->
         {% if page.catalog %}
@@ -186,6 +186,8 @@ layout: default
         </div>
     </div>
 </article>
+<div id="gitment"></div>
+
 <!--{% if site.comment_gitment_repo %}-->
 <!--<div id="gitmentContainer"></div>-->
 <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
@@ -277,3 +279,19 @@ layout: default
     }
 </style>
 {% endif %}
+<!--gitment 评论-->
+<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script>
+
+<script>
+    var gitment = new Gitment({
+        // id: '页面 ID', // 可选。默认为 location.href
+        owner: 'Hdj2048228',
+        repo: 'blogIssue',
+        oauth: {
+            client_id: 'e601f1d24a0fd7fb16cc',
+            client_secret: '1bf028b8623f621e671ce23c7e89223112780af0',
+        },
+    })
+    gitment.render('gitment')
+</script>
