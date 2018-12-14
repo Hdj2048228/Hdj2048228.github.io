@@ -47,7 +47,7 @@ Autoprefixer其实是postcss的插件，见[postcss-cli gitHub](https://github.c
  （下载慢的话使用淘宝镜像 https://npm.taobao.org/ cnpm安装 这个可以百度一下）
 ### 3.配置IDEA External Tools
 打开Webstorm设置，Preferences -> Tools -> External Tools ;点击新增按钮，如图：
-![idea-autoprefixers](http://hedj.top/img/2017-11/idea-autoprefixers.png)
+![idea-autoprefixers](http://hdj2048228.github.io/img/2017-11/idea-autoprefixers.png)
 
 Program:填入你的postcss-cli 的PATH，下面是我的文件路径
 
@@ -56,7 +56,7 @@ Program:填入你的postcss-cli 的PATH，下面是我的文件路径
 ```
 最好看一下又没有这个文件:
 
-![idea-postcss](http://hedj.top/img/2017-11/idea-postcss.png)
+![idea-postcss](http://hdj2048228.github.io/img/2017-11/idea-postcss.png)
 
 Parameters:
 
@@ -81,4 +81,4 @@ $ProjectFileDir$
 
 ####  另附windows的配置方式
 
-![idea-postcss](http://hedj.top/img/2017-11/idea-autoprefixer-windows.png)
+![idea-postcss](http://hdj2048228.github.io/img/2017-11/idea-autoprefixer-windows.png)
