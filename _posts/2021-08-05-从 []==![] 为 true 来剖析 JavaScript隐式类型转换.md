@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      []==![]
+title:      []==![]隐式类型转换
 subtitle:    从 []==![] 为 true 来剖析 JavaScript 隐式类型转换
 date:       2021-08-06
 author:     hdj
@@ -12,7 +12,7 @@ tags:
     - 隐式类型转换
 ---
 
-#前言
+# 前言
     
    JavaScript中的 == 和 === 之间有何区别， == 判断是否相等是否存在什么规则？让我们从 [] !== []
    这个简单的表达式开始来窥探究竟。
@@ -94,7 +94,7 @@ tags:
   
   那么现在的表达式可以改为 **[] == false** 
   
-##   [] == false???
+##  [] == false???
 
   是不是很疑惑按上面讲的来说， **[] 为true** 那岂不是 可以改为 **true == false** 了，结果不就是**false**嘛
   
@@ -102,31 +102,31 @@ tags:
     
    [ES5模式下](https://yanhaijing.com/es5/#200)
     
-      比较运算x==y, 其中x和 y是值，产生true或者false。这样的比较按如下方式进行：
+   比较运算x==y, 其中x和 y是值，产生true或者false。这样的比较按如下方式进行：
       
->1. 若Type(x)与Type(y)相同， 则
-	a.若Type(x)为Undefined， 返回true。
-	b.若Type(x)为Null， 返回true。
-	c.若Type(x)为Number， 则
-	    i若x为NaN， 返回false。
-		ii若y为NaN， 返回false。
-		iii若x与y为相等数值， 返回true。
-		iv若x 为 +0 且 y为−0， 返回true。
-		v若x 为 −0 且 y为+0， 返回true。
-		vi 返回false。
-	d.若Type(x)为String, 则当x和y为完全相同的字符序列（长度相等且相同字符在相同位置）时返回true。 否则， 返回false。
-	e.若Type(x)为Boolean, 当x和y为同为true或者同为false时返回true。 否则， 返回false。
-	f.当x和y为引用同一对象时返回true。否则，返回false。
-2.若x为null且y为undefined， 返回true。
-3.若x为undefined且y为null， 返回true。
-4.若Type(x) 为 Number 且 Type(y)为String， 返回comparison x == ToNumber(y)的结果。
-5.若Type(x) 为 String 且 Type(y)为Number，
-6.返回比较ToNumber(x) == y的结果。
-7.若Type(x)为Boolean， 返回比较ToNumber(x) == y的结果。
-8.若Type(y)为Boolean， 返回比较x == ToNumber(y)的结果。
-9.若Type(x)为String或Number，且Type(y)为Object，返回比较x == ToPrimitive(y)的结果。
-10.若Type(x)为Object且Type(y)为String或Number， 返回比较ToPrimitive(x) == y的结果。
-11.返回false。
+    1. 若Type(x)与Type(y)相同， 则
+        a.若Type(x)为Undefined， 返回true。
+        b.若Type(x)为Null， 返回true。
+        c.若Type(x)为Number， 则
+            i若x为NaN， 返回false。
+            ii若y为NaN， 返回false。
+            iii若x与y为相等数值， 返回true。
+            iv若x 为 +0 且 y为−0， 返回true。
+            v若x 为 −0 且 y为+0， 返回true。
+            vi 返回false。
+        d.若Type(x)为String, 则当x和y为完全相同的字符序列（长度相等且相同字符在相同位置）时返回true。 否则， 返回false。
+        e.若Type(x)为Boolean, 当x和y为同为true或者同为false时返回true。 否则， 返回false。
+        f.当x和y为引用同一对象时返回true。否则，返回false。
+    2.若x为null且y为undefined， 返回true。
+    3.若x为undefined且y为null， 返回true。
+    4.若Type(x) 为 Number 且 Type(y)为String， 返回comparison x == ToNumber(y)的结果。
+    5.若Type(x) 为 String 且 Type(y)为Number，
+    6.返回比较ToNumber(x) == y的结果。
+    7.若Type(x)为Boolean， 返回比较ToNumber(x) == y的结果。
+    8.若Type(y)为Boolean， 返回比较x == ToNumber(y)的结果。
+    9.若Type(x)为String或Number，且Type(y)为Object，返回比较x == ToPrimitive(y)的结果。
+    10.若Type(x)为Object且Type(y)为String或Number， 返回比较ToPrimitive(x) == y的结果。
+    11.返回false。
  
   
   按照以上规则我们再来看 **[] == false**
@@ -135,7 +135,7 @@ tags:
   
    **[] == 0** 继续规则发现 **Type([])** 为 **Object** 则满足**第10条** 则转化为**ToPrimitive([]) == 0**
    
-##    ToPrimitive([]) == 0   
+##  ToPrimitive([]) == 0   
   
   
     ToPrimitive(obj,preferredType)
@@ -191,6 +191,13 @@ tags:
  据上述规则来看的话
      
    **ToPrimitive([])** 得到的是 空字符穿  **''** ，则意味着比较的是 **'' == 0**
+
+### 思考 如何让 {} == 2 的结果为true   
+     
+   let a = {}  
+   
+   a == 2 返回 true
+     
      
 ##  '' == 0 
       
@@ -200,17 +207,37 @@ tags:
   
    **0 == 0**  符合 第1条-c-iii 肯定为**true**了哈
    
-## 过程总结 
+## 复盘过程总结 
 
-    现在，我们来分析一下文章开头提出的问题：[] == ![] // true
+ 现在，我们来分析一下文章开头提出的问题：[] == ![] // true
     
   * 根据 上面 逻辑非运算符 和 ToPrimitive 的规则，![] 返回 false，因此，我们接下来需要比较的是 [] == false；
     
   * [] == false 符合上面规则中的第 8 条，需要对 false 执行 ToNumber 转换，得到 0，接下来要比较 [] == 0；
   
-   * [] == 0 符合上面规则中的第 10 条，对 [] 进行 ToPrimitive 转换，得到空字符串 ''，接下来要比较 '' == 0；
-   * '' == 0 符合上面规则中的第 5 条，对 '' 进行 ToNumber 转换，得到 0
-   * 接下来比较 0 == 0，得到true      
+  * [] == 0 符合上面规则中的第 10 条，对 [] 进行 ToPrimitive 转换，得到空字符串 ''，接下来要比较 '' == 0；
+  * '' == 0 符合上面规则中的第 5 条，对 '' 进行 ToNumber 转换，得到 0
+  * 接下来比较 0 == 0，得到true      
+   
+   
+## 扩展
+
+     []==[]
+     //false
+     []==![]
+     //true
+     {}==!{}
+     //false
+     {}==![]
+     //VM1896:1 Uncaught SyntaxError: Unexpected token ==
+     ![]=={}
+     //false
+     []==!{}
+     //true
+     undefined==null
+     //true
+   
+   
    
 ###  JS数据类型
  
@@ -320,13 +347,15 @@ tags:
 ### 7.1.23 对字符串类型应用 ToNumber
 
 >对字符串应用 ToNumber 时，如果符合如下规则，转为数值：
- * 十进制的字符串数值常量，可有任意位数的0在前面，如 '000123' 和 '123' 都会被转为 123
+ 
+* 十进制的字符串数值常量，可有任意位数的0在前面，如 '000123' 和 '123' 都会被转为 123
 * 指数形式的字符串数值常量，如 '1e2' 转为 100
 * 带符号的十进制字符串数值常量或指数字符串数值常量，如'-100', '-1e2' 都会转为 -100
 * 二进制，八进制，十六进制的字符串数值常量，如'0b11', '0o11', '0x11' 分别转为 3, 9, 17
 * 符合上述条件的字符串数值常量开头或结尾，可以包含任意多个空格。如' 0b11 ' 转为 3
 * 空字符串（长度为零的字符串）或只有空格的字符串，转为 0
 * 如果字符串不符合上述规则，将转为NaN。  
+
 ### 运算符优先级
 
  <table class="fullwidth-table">
