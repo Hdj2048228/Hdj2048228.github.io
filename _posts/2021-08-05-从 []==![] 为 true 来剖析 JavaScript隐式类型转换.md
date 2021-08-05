@@ -58,7 +58,7 @@ tags:
   
   **由此我们得知 == 会发生隐式类型转换**
   
-## 然后我们再了解一下运算符的优先级
+## 运算符的优先级
    
    [MDN-运算符优先级](https://developer.mozilla.orghttps://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Operator_Precedence)
    
@@ -93,6 +93,9 @@ tags:
   
   
   [7.1.2 ToBoolean ( argument )](https://tc39.es/ecma262/#sec-toboolean)
+  
+  ![ToBoolean](http://hdj2048228.github.io/img/2021-08/ToBoolean.png)
+
   
   由此可得 **[] 为 true**,那么 **![]** 则为 **false**
   
@@ -198,13 +201,17 @@ tags:
      
    **ToPrimitive([])** 得到的是 空字符穿  **''** ，则意味着比较的是 **'' == 0**
 
-### 思考 如何让 {} == 2 的结果为true   
+### 思考 1 如何让 {} == 2 的结果为true   
      
    let a = {}  
    
    a == 2 返回 true
      
-     
+### 思考 2 如何让 (a == 1 && a== 2 && a == 3) 的结果为true   
+       
+ let a = {}  
+ 
+ (a == 1 && a== 2 && a == 3) 返回 true   
 ##  '' == 0 
     
  [7.1.4 ToNumber ( argument )](https://tc39.es/ecma262/#sec-tonumber)
@@ -247,7 +254,7 @@ tags:
    
    
    
-###  JS数据类型
+### JS数据类型
  
    基本数据类型 ：Undefined Null Boolean Number String
     
@@ -315,7 +322,7 @@ tags:
    字符串比较使用的方式是简单地检测字符编码单元序列是否相同。不会做更复杂的、基于语义的字符或者字符串相等的定义以及Unicode规范中定义的collating order。所以Unicode标准中认为相等的String值可能被检测为不等。实际上这一算法认为两个字符串已经是经过规范化的形式。
   
 
-###  7.1.1 ToPrimitive ( input [ , preferredType ] )
+### 7.1.1 ToPrimitive ( input [ , preferredType ] )
 
  ![ToPrimitive](http://hdj2048228.github.io/img/2021-08/ToPrimitive.png)
 
@@ -352,7 +359,7 @@ tags:
    * Symbol：抛出 TypeError 异常
    * Object：先进行 ToPrimitive 转换，得到原始值，再进行 ToNumber 转换
    
-### 7.1.23 对字符串类型应用 ToNumber
+### 7.1.23 StringToNumber
 
 >对字符串应用 ToNumber 时，如果符合如下规则，转为数值：
  
@@ -363,6 +370,17 @@ tags:
 * 符合上述条件的字符串数值常量开头或结尾，可以包含任意多个空格。如' 0b11 ' 转为 3
 * 空字符串（长度为零的字符串）或只有空格的字符串，转为 0
 * 如果字符串不符合上述规则，将转为NaN。  
+
+### 7.1.23 ToString
+抽象操作 ToString 根据下列规则将其参数转换为字符串类型的值：
+
+    Undefined："undefined"
+    Null："null"
+    Boolean：如果参数是 true，那么结果为 "true"。 如果参数是 false，那么结果为 "false"。
+    String：结果等于输入的参数（不转换）。
+    Number：参见下文。
+    Symbol：抛出 TypeError 异常
+    Object：先进行 ToPrimitive 转换，hint 为 'string'，得到原始值，再进行 ToString 转换
 
 ### 运算符优先级
 
