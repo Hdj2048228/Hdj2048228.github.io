@@ -63,12 +63,24 @@ tags:
    [MDN-运算符优先级](https://developer.mozilla.orghttps://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Operator_Precedence)
    
 
+   >思考1: a的值
+   
+    var a = {n: 1}
+    a.n = a = {m: 2} 
+    
+    
    
    通过 运算符优先级我们发现 **！** 的优先级是大于 **==**的
     
-   通过[ECMAScript 2021标准](https://tc39.es/ecma262/)我们得知以下内容
-  
-   总结起来就是**!**  会把其后的表达式得结果转为Boolean值
+   通过 [13.5.7 Logical NOT Operator ( ! )](https://tc39.es/ecma262/#sec-logical-not-operator)我们得知以下内容
+    ![Logical NOT Operator ( ! )](http://hdj2048228.github.io/img/2021-08/logincNot.png)
+    
+
+   总结起来就是**!**  会把其后的表达式得结果转为Boolean值: 规则如下图
+   
+   ![ToBoolean](http://hdj2048228.github.io/img/2021-08/ToBoolean.png)（  [7.1.2 ToBoolean ( argument )](https://tc39.es/ecma262/#sec-toboolean)
+）
+
    
    这就涉及到另外一个知识点了，什么样的值为**true** 什么样的值为**false**?
    
@@ -81,7 +93,7 @@ tags:
     
        if (true)
        if ({})
-      if ([])
+       if ([])
        if (42)
        if ("foo")
        if (new Date())
@@ -92,7 +104,6 @@ tags:
        if (-Infinity)    
   
   
-  [7.1.2 ToBoolean ( argument )](https://tc39.es/ecma262/#sec-toboolean)
   
   ![ToBoolean](http://hdj2048228.github.io/img/2021-08/ToBoolean.png)
 
@@ -336,6 +347,9 @@ tags:
   ![OrdinaryToPrimitive](http://hdj2048228.github.io/img/2021-08/OrdinaryToPrimitive.png)
 
      
+###  6.2.4.5 GetValue ( V )
+   ![ToBoolean](http://hdj2048228.github.io/img/2021-08/getValue.png)
+
 ### 7.1.2 ToBoolean ( argument )
      
    ![ToBoolean](http://hdj2048228.github.io/img/2021-08/ToBoolean.png)
@@ -382,6 +396,21 @@ tags:
     Symbol：抛出 TypeError 异常
     Object：先进行 ToPrimitive 转换，hint 为 'string'，得到原始值，再进行 ToString 转换
 
+
+### 思考 1
+  [执行过程](http://hdj2048228.github.io/img/2021-08/think1.png)
+  
+  1. **.**的运算符 优先级 > **==** ，所以先执行 a.x （由于a是引用类型，此时的a.x假设内存地址是Ox01)
+  
+  2. 然后执行 **a = {x: n}** 此时 *a* 重新赋值了一个对象地址变了，所以
+   
+  3. 然后执行 **Ox01= a**
+  
+  最后 a = {x: n}
+  
+  [具体解析过程](https://blog.csdn.net/zd429502095/article/details/99872910)
+  
+  
 ### 运算符优先级
 
  <table class="fullwidth-table">
@@ -682,6 +711,8 @@ tags:
             </tbody>
         </table>
   
-  
-  
+
+     
+     
+   
      
