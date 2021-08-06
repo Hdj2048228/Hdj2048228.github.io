@@ -366,7 +366,7 @@ tags:
        </tbody>
    </table>
 
-   >思考1: a的值
+ ## 思考1: a的值 : a.n = a = {m: 2} 
    
     var a = {n: 1}
     a.n = a = {m: 2} 
@@ -699,7 +699,7 @@ tags:
 
 
 ### 思考 1
-  [执行过程](http://hdj2048228.github.io/img/2021-08/think1.png)
+  ![执行过程](http://hdj2048228.github.io/img/2021-08/think1.png)
   
   1. **.**的运算符 优先级 > **==** ，所以先执行 a.x （由于a是引用类型，此时的a.x假设内存地址是Ox01)
   
@@ -719,9 +719,10 @@ tags:
     a.valueOf = function(){
       return 2
     }
+    
 ### 思考 3
     
-    让 a==2 && a==3 && a==4
+    让 a==2 && a==3 && a==4 为true
     
     let a= {}
     let i = 1
@@ -742,7 +743,7 @@ tags:
   1. [从[]==![]为true来剖析JavaScript各种蛋疼的类型转换](https://segmentfault.com/a/1190000008432611)
   
   2. [ECMAScript® 2022 Language Specification](https://tc39.es/ecma262/#sec-intro)
-  
-  3.[ECMAScript5.1中文版，下面](http://yanhaijing.com/es5/#about)
+ 
+  3. [ECMAScript5.1中文版，下面](http://yanhaijing.com/es5/#about)
      
      
