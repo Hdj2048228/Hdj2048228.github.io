@@ -18,8 +18,13 @@ tags:
     
    JavaScript中的 == 和 === 之间有何区别， == 判断是否相等是否存在什么规则？让我们从 [] !== []
    这个简单的表达式开始来窥探究竟。
+  
+   让我们从`[] == ![]` 这个表达式的结果入手
 
-#  先来看看 [] == []的 为什么是false
+#  [] == ![] 结果是多少？
+
+  这个是我经常问的一个面试题，通常我们项目中如果用到Eslint强约束的话，会建议你用三等`===`，而不是
+#  先来看看 [] == []的 结果
    
    这个简单，理解js数据类型的应该都知道，对象类型是引用类型，之所以 [] == [] 输出为false，是因为，虽然长得
   一模一样，但其实是两个不同的对象，就像两个双胞胎，看起来一样，但是其身份证号（内存地址）是不一样的，，所以 对象之间的比较是比较的内存地址，
@@ -61,7 +66,305 @@ tags:
 ## 运算符的优先级
    
    [MDN-运算符优先级](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Operator_Precedence)
+
    
+<table class="fullwidth-table">
+       <tbody>
+           <tr>
+               <th>优先级</th>
+               <th>运算符类型</th>
+               <th>结合性</th>
+               <th>运算符</th>
+           </tr>
+           <tr>
+               <td>21</td>
+               <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Grouping">分组</a></td>
+               <td>n/a（不相关）</td>
+               <td><code>( … )</code></td>
+           </tr>
+           <tr>
+               <td rowspan="5">20</td>
+               <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Property_Accessors#dot_notation">成员访问</a></td>
+               <td>从左到右</td>
+               <td><code>… . …</code></td>
+           </tr>
+           <tr>
+               <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Property_Accessors#bracket_notation">需计算的成员访问</a></td>
+               <td>从左到右</td>
+               <td><code>… [ … ]</code></td>
+           </tr>
+           <tr>
+               <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/new"><code>new</code></a>（带参数列表）</td>
+               <td>n/a</td>
+               <td><code>new … ( … )</code></td>
+           </tr>
+           <tr>
+               <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Functions">函数调用</a></td>
+               <td>从左到右</td>
+               <td><code>… ( <var>… </var>)</code></td>
+           </tr>
+           <tr>
+               <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Optional_chaining">可选链（Optional chaining）</a></td>
+               <td>从左到右</td>
+               <td><code>?.</code></td>
+           </tr>
+           <tr>
+               <td>19</td>
+               <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/new"><code>new</code></a>（无参数列表）</td>
+               <td>从右到左</td>
+               <td><code>new …</code></td>
+           </tr>
+           <tr>
+               <td rowspan="2">18</td>
+               <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators#increment">后置递增</a></td>
+               <td rowspan="2">n/a</td>
+               <td><code>… ++</code></td>
+           </tr>
+           <tr>
+               <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators#decrement">后置递减</a></td>
+               <td><code>… --</code></td>
+           </tr>
+           <tr>
+               <td rowspan="10">17</td>
+               <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Logical_NOT">逻辑非 (!)</a></td>
+               <td rowspan="10">从右到左</td>
+               <td><code>! …</code></td>
+           </tr>
+           <tr>
+               <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Bitwise_NOT">按位非 (~)</a></td>
+               <td><code>~ …</code></td>
+           </tr>
+           <tr>
+               <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Unary_plus">一元加法 (+)</a></td>
+               <td><code>+ …</code></td>
+           </tr>
+           <tr>
+               <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Unary_negation">一元减法 (-)</a></td>
+               <td><code>- …</code></td>
+           </tr>
+           <tr>
+               <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators#increment">前置递增</a></td>
+               <td><code>++ …</code></td>
+           </tr>
+           <tr>
+               <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators#decrement">前置递减</a></td>
+               <td><code>-- …</code></td>
+           </tr>
+           <tr>
+               <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/typeof"><code>typeof</code></a></td>
+               <td><code>typeof …</code></td>
+           </tr>
+           <tr>
+               <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/void"><code>void</code></a></td>
+               <td><code>void …</code></td>
+           </tr>
+           <tr>
+               <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/delete"><code>delete</code></a></td>
+               <td><code>delete …</code></td>
+           </tr>
+           <tr>
+               <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/await"><code>await</code></a></td>
+               <td><code>await …</code></td>
+           </tr>
+           <tr>
+               <td>16</td>
+               <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Exponentiation">幂 (**)</a></td>
+               <td>从右到左</td>
+               <td><code>… ** …</code></td>
+           </tr>
+           <tr>
+               <td rowspan="3">15</td>
+               <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Multiplication">乘法 (*)</a></td>
+               <td rowspan="3">从左到右</td>
+               <td><code>… * …</code></td>
+           </tr>
+           <tr>
+               <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Division">除法 (/)</a></td>
+               <td><code>… / …</code></td>
+           </tr>
+           <tr>
+               <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Remainder">取余 (%)</a></td>
+               <td><code>… % …</code></td>
+           </tr>
+           <tr>
+               <td rowspan="2">14</td>
+               <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Addition">加法 (+)</a></td>
+               <td rowspan="2">从左到右</td>
+               <td><code>… + …</code></td>
+           </tr>
+           <tr>
+               <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Subtraction">减法 (-)</a></td>
+               <td><code>… - …</code></td>
+           </tr>
+           <tr>
+               <td rowspan="3">13</td>
+               <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Left_shift">按位左移 (&lt;&lt;)</a></td>
+               <td rowspan="3">从左到右</td>
+               <td><code>… &lt;&lt; …</code></td>
+           </tr>
+           <tr>
+               <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Right_shift">按位右移 (&gt;&gt;)</a></td>
+               <td><code>… &gt;&gt; …</code></td>
+           </tr>
+           <tr>
+               <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Unsigned_right_shift">无符号右移 (&gt;&gt;&gt;)</a></td>
+               <td><code>… &gt;&gt;&gt; …</code></td>
+           </tr>
+           <tr>
+               <td rowspan="6">12</td>
+               <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Less_than">小于 (&lt;)</a></td>
+               <td rowspan="6">从左到右</td>
+               <td><code>… &lt; …</code></td>
+           </tr>
+           <tr>
+               <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Less_than_or_equal">小于等于 (&lt;=)</a></td>
+               <td><code>… &lt;= …</code></td>
+           </tr>
+           <tr>
+               <td><a href="/en-US/docs/Web/JavaScript/Reference/Operators/Greater_than">大于 (&gt;)</a></td>
+               <td><code>… &gt; …</code></td>
+           </tr>
+           <tr>
+               <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Greater_than_or_equal">大于等于 (&gt;=)</a></td>
+               <td><code>… &gt;= …</code></td>
+           </tr>
+           <tr>
+               <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/in"><code>in</code></a></td>
+               <td><code>… in …</code></td>
+           </tr>
+           <tr>
+               <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/instanceof"><code>instanceof</code></a></td>
+               <td><code>… instanceof …</code></td>
+           </tr>
+           <tr>
+               <td rowspan="4">11</td>
+               <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Equality">相等 (==)</a></td>
+               <td rowspan="4">从左到右</td>
+               <td><code>… == …</code></td>
+           </tr>
+           <tr>
+               <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Inequality">不相等 (!=)</a></td>
+               <td><code>… != …</code></td>
+           </tr>
+           <tr>
+               <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Strict_equality">一致/严格相等 (===)</a></td>
+               <td><code>… === …</code></td>
+           </tr>
+           <tr>
+               <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Strict_inequality">不一致/严格不相等 (!==)</a></td>
+               <td><code>… !== …</code></td>
+           </tr>
+           <tr>
+               <td>10</td>
+               <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Bitwise_AND">按位与 (&amp;)</a></td>
+               <td>从左到右</td>
+               <td><code>… &amp; …</code></td>
+           </tr>
+           <tr>
+               <td>9</td>
+               <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Bitwise_XOR">按位异或 (^)</a></td>
+               <td>从左到右</td>
+               <td><code>… ^ …</code></td>
+           </tr>
+           <tr>
+               <td>8</td>
+               <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Bitwise_OR">按位或 (|)</a></td>
+               <td>从左到右</td>
+               <td><code>… | …</code></td>
+           </tr>
+           <tr>
+               <td>7</td>
+               <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Logical_AND">逻辑与 (&amp;&amp;)</a></td>
+               <td>从左到右</td>
+               <td><code>… &amp;&amp; …</code></td>
+           </tr>
+           <tr>
+               <td>6</td>
+               <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Logical_OR">逻辑或 (||)</a></td>
+               <td>从左到右</td>
+               <td><code>… || …</code></td>
+           </tr>
+           <tr>
+               <td>5</td>
+               <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing_operator">空值合并 (??)</a></td>
+               <td>从左到右</td>
+               <td><code>… ?? …</code></td>
+           </tr>
+           <tr>
+               <td>4</td>
+               <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Conditional_Operator">条件（三元）运算符</a></td>
+               <td>从右到左</td>
+               <td><code>… ? … : …</code></td>
+           </tr>
+           <tr>
+               <td rowspan="16">3</td>
+               <td rowspan="16"><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators#assignment_operators">赋值</a></td>
+               <td rowspan="16">从右到左</td>
+               <td><code>… = …</code></td>
+           </tr>
+           <tr>
+               <td><code>… += …</code></td>
+           </tr>
+           <tr>
+               <td><code>… -= …</code></td>
+           </tr>
+           <tr>
+               <td><code>… **= …</code></td>
+           </tr>
+           <tr>
+               <td><code>… *= …</code></td>
+           </tr>
+           <tr>
+               <td><code>… /= …</code></td>
+           </tr>
+           <tr>
+               <td><code>… %= …</code></td>
+           </tr>
+           <tr>
+               <td><code>… &lt;&lt;= …</code></td>
+           </tr>
+           <tr>
+               <td><code>… &gt;&gt;= …</code></td>
+           </tr>
+           <tr>
+               <td><code>… &gt;&gt;&gt;= …</code></td>
+           </tr>
+           <tr>
+               <td><code>… &amp;= …</code></td>
+           </tr>
+           <tr>
+               <td><code>… ^= …</code></td>
+           </tr>
+           <tr>
+               <td><code>… |= …</code></td>
+           </tr>
+           <tr>
+               <td><code>… &amp;&amp;= …</code></td>
+           </tr>
+           <tr>
+               <td><code>… ||= …</code></td>
+           </tr>
+           <tr>
+               <td><code>… ??= …</code></td>
+           </tr>
+           <tr>
+               <td rowspan="2">2</td>
+               <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/yield"><code>yield</code></a></td>
+               <td rowspan="2">从右到左</td>
+               <td><code>yield …</code></td>
+           </tr>
+           <tr>
+               <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/yield*"><code>yield*</code></a></td>
+               <td><code>yield* …</code></td>
+           </tr>
+           <tr>
+               <td>1</td>
+               <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Comma_Operator">逗号 / 序列</a></td>
+               <td>从左到右</td>
+               <td><code>… , …</code></td>
+           </tr>
+       </tbody>
+   </table>
 
    >思考1: a的值
    
@@ -134,20 +437,19 @@ tags:
     2.若x为null且y为undefined， 返回true。
     3.若x为undefined且y为null， 返回true。
     4.若Type(x) 为 Number 且 Type(y)为String， 返回comparison x == ToNumber(y)的结果。
-    5.若Type(x) 为 String 且 Type(y)为Number，
-    6.返回比较ToNumber(x) == y的结果。
-    7.若Type(x)为Boolean， 返回比较ToNumber(x) == y的结果。
-    8.若Type(y)为Boolean， 返回比较x == ToNumber(y)的结果。
-    9.若Type(x)为String或Number，且Type(y)为Object，返回比较x == ToPrimitive(y)的结果。
-    10.若Type(x)为Object且Type(y)为String或Number， 返回比较ToPrimitive(x) == y的结果。
-    11.返回false。
+    5.若Type(x) 为 String 且 Type(y)为Number，返回比较ToNumber(x) == y的结果。
+    6.若Type(x)为Boolean， 返回比较ToNumber(x) == y的结果。
+    7.若Type(y)为Boolean， 返回比较x == ToNumber(y)的结果。
+    8.若Type(x)为String或Number，且Type(y)为Object，返回比较x == ToPrimitive(y)的结果。
+    9.若Type(x)为Object且Type(y)为String或Number， 返回比较ToPrimitive(x) == y的结果。
+    10.返回false。
  
   
   按照以上规则我们再来看 **[] == false**
   
-  则会发现 **[]** 与 **false** 类型不同，且**Type(false)** 为Boolean满足**第8条** 则转化为**[] == ToNumber(false)** 即 **[] == 0**
+  则会发现 **[]** 与 **false** 类型不同，且**Type(false)** 为Boolean满足**第7条** 则转化为**[] == ToNumber(false)** 即 **[] == 0**
   
-   **[] == 0** 继续规则发现 **Type([])** 为 **Object** 则满足**第10条** 则转化为**ToPrimitive([]) == 0**
+   **[] == 0** 继续规则发现 **Type([])** 为 **Object** 则满足**第9条** 则转化为**ToPrimitive([]) == 0**
    
 ##  ToPrimitive([]) == 0   
    
@@ -208,17 +510,18 @@ tags:
      
    **ToPrimitive([])** 得到的是 空字符穿  **''** ，则意味着比较的是 **'' == 0**
 
-### 思考 1 如何让 {} == 2 的结果为true   
+### 思考 2 如何让 {} == 2 的结果为true   
      
-   let a = {}  
-   
-   a == 2 返回 true
-     
-### 思考 2 如何让 (a == 1 && a== 2 && a == 3) 的结果为true   
+       let a = {}  
        
- let a = {}  
- 
- (a == 1 && a== 2 && a == 3) 返回 true   
+       a == 2 返回 true
+     
+### 思考 3 如何让 (a == 1 && a== 2 && a == 3) 的结果为true   
+       
+     let a = {}  
+     
+     (a == 1 && a== 2 && a == 3) 返回 true   
+     
 ##  '' == 0 
     
  [7.1.4 ToNumber ( argument )](https://tc39.es/ecma262/#sec-tonumber)
@@ -235,10 +538,12 @@ tags:
     
   * 根据 上面 逻辑非运算符 和 ToPrimitive 的规则，![] 返回 false，因此，我们接下来需要比较的是 [] == false；
     
-  * [] == false 符合上面规则中的第 8 条，需要对 false 执行 ToNumber 转换，得到 0，接下来要比较 [] == 0；
+  * [] == false 符合上面规则中的第 7 条，需要对 false 执行 ToNumber 转换，得到 0，接下来要比较 [] == 0；
+ 
+  * [] == 0 符合上面规则中的第 9 条，对 [] 进行 ToPrimitive 转换，得到空字符串 ''，接下来要比较 '' == 0；
   
-  * [] == 0 符合上面规则中的第 10 条，对 [] 进行 ToPrimitive 转换，得到空字符串 ''，接下来要比较 '' == 0；
   * '' == 0 符合上面规则中的第 5 条，对 '' 进行 ToNumber 转换，得到 0
+  
   * 接下来比较 0 == 0，得到true      
    
    
@@ -406,309 +711,38 @@ tags:
   
   [具体解析过程](https://blog.csdn.net/zd429502095/article/details/99872910)
   
-  
-### 运算符优先级
+### 思考 2 
+    
+    如何 let a ={} , a== 2等式成立
+    
+    let a= {}
+    a.valueOf = function(){
+      return 2
+    }
+### 思考 3
+    
+    让 a==2 && a==3 && a==4
+    
+    let a= {}
+    let i = 1
+    a.valueOf = function(){
+      return ++i
+    }  
+    
 
- <table class="fullwidth-table">
-            <tbody>
-                <tr>
-                    <th>优先级</th>
-                    <th>运算符类型</th>
-                    <th>结合性</th>
-                    <th>运算符</th>
-                </tr>
-                <tr>
-                    <td>21</td>
-                    <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Grouping">分组</a></td>
-                    <td>n/a（不相关）</td>
-                    <td><code>( … )</code></td>
-                </tr>
-                <tr>
-                    <td rowspan="5">20</td>
-                    <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Property_Accessors#dot_notation">成员访问</a></td>
-                    <td>从左到右</td>
-                    <td><code>… . …</code></td>
-                </tr>
-                <tr>
-                    <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Property_Accessors#bracket_notation">需计算的成员访问</a></td>
-                    <td>从左到右</td>
-                    <td><code>… [ … ]</code></td>
-                </tr>
-                <tr>
-                    <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/new"><code>new</code></a>（带参数列表）</td>
-                    <td>n/a</td>
-                    <td><code>new … ( … )</code></td>
-                </tr>
-                <tr>
-                    <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Functions">函数调用</a></td>
-                    <td>从左到右</td>
-                    <td><code>… ( <var>… </var>)</code></td>
-                </tr>
-                <tr>
-                    <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Optional_chaining">可选链（Optional chaining）</a></td>
-                    <td>从左到右</td>
-                    <td><code>?.</code></td>
-                </tr>
-                <tr>
-                    <td>19</td>
-                    <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/new"><code>new</code></a>（无参数列表）</td>
-                    <td>从右到左</td>
-                    <td><code>new …</code></td>
-                </tr>
-                <tr>
-                    <td rowspan="2">18</td>
-                    <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators#increment">后置递增</a></td>
-                    <td rowspan="2">n/a</td>
-                    <td><code>… ++</code></td>
-                </tr>
-                <tr>
-                    <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators#decrement">后置递减</a></td>
-                    <td><code>… --</code></td>
-                </tr>
-                <tr>
-                    <td rowspan="10">17</td>
-                    <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Logical_NOT">逻辑非 (!)</a></td>
-                    <td rowspan="10">从右到左</td>
-                    <td><code>! …</code></td>
-                </tr>
-                <tr>
-                    <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Bitwise_NOT">按位非 (~)</a></td>
-                    <td><code>~ …</code></td>
-                </tr>
-                <tr>
-                    <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Unary_plus">一元加法 (+)</a></td>
-                    <td><code>+ …</code></td>
-                </tr>
-                <tr>
-                    <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Unary_negation">一元减法 (-)</a></td>
-                    <td><code>- …</code></td>
-                </tr>
-                <tr>
-                    <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators#increment">前置递增</a></td>
-                    <td><code>++ …</code></td>
-                </tr>
-                <tr>
-                    <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators#decrement">前置递减</a></td>
-                    <td><code>-- …</code></td>
-                </tr>
-                <tr>
-                    <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/typeof"><code>typeof</code></a></td>
-                    <td><code>typeof …</code></td>
-                </tr>
-                <tr>
-                    <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/void"><code>void</code></a></td>
-                    <td><code>void …</code></td>
-                </tr>
-                <tr>
-                    <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/delete"><code>delete</code></a></td>
-                    <td><code>delete …</code></td>
-                </tr>
-                <tr>
-                    <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/await"><code>await</code></a></td>
-                    <td><code>await …</code></td>
-                </tr>
-                <tr>
-                    <td>16</td>
-                    <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Exponentiation">幂 (**)</a></td>
-                    <td>从右到左</td>
-                    <td><code>… ** …</code></td>
-                </tr>
-                <tr>
-                    <td rowspan="3">15</td>
-                    <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Multiplication">乘法 (*)</a></td>
-                    <td rowspan="3">从左到右</td>
-                    <td><code>… * …</code></td>
-                </tr>
-                <tr>
-                    <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Division">除法 (/)</a></td>
-                    <td><code>… / …</code></td>
-                </tr>
-                <tr>
-                    <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Remainder">取余 (%)</a></td>
-                    <td><code>… % …</code></td>
-                </tr>
-                <tr>
-                    <td rowspan="2">14</td>
-                    <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Addition">加法 (+)</a></td>
-                    <td rowspan="2">从左到右</td>
-                    <td><code>… + …</code></td>
-                </tr>
-                <tr>
-                    <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Subtraction">减法 (-)</a></td>
-                    <td><code>… - …</code></td>
-                </tr>
-                <tr>
-                    <td rowspan="3">13</td>
-                    <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Left_shift">按位左移 (&lt;&lt;)</a></td>
-                    <td rowspan="3">从左到右</td>
-                    <td><code>… &lt;&lt; …</code></td>
-                </tr>
-                <tr>
-                    <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Right_shift">按位右移 (&gt;&gt;)</a></td>
-                    <td><code>… &gt;&gt; …</code></td>
-                </tr>
-                <tr>
-                    <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Unsigned_right_shift">无符号右移 (&gt;&gt;&gt;)</a></td>
-                    <td><code>… &gt;&gt;&gt; …</code></td>
-                </tr>
-                <tr>
-                    <td rowspan="6">12</td>
-                    <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Less_than">小于 (&lt;)</a></td>
-                    <td rowspan="6">从左到右</td>
-                    <td><code>… &lt; …</code></td>
-                </tr>
-                <tr>
-                    <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Less_than_or_equal">小于等于 (&lt;=)</a></td>
-                    <td><code>… &lt;= …</code></td>
-                </tr>
-                <tr>
-                    <td><a href="/en-US/docs/Web/JavaScript/Reference/Operators/Greater_than">大于 (&gt;)</a></td>
-                    <td><code>… &gt; …</code></td>
-                </tr>
-                <tr>
-                    <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Greater_than_or_equal">大于等于 (&gt;=)</a></td>
-                    <td><code>… &gt;= …</code></td>
-                </tr>
-                <tr>
-                    <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/in"><code>in</code></a></td>
-                    <td><code>… in …</code></td>
-                </tr>
-                <tr>
-                    <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/instanceof"><code>instanceof</code></a></td>
-                    <td><code>… instanceof …</code></td>
-                </tr>
-                <tr>
-                    <td rowspan="4">11</td>
-                    <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Equality">相等 (==)</a></td>
-                    <td rowspan="4">从左到右</td>
-                    <td><code>… == …</code></td>
-                </tr>
-                <tr>
-                    <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Inequality">不相等 (!=)</a></td>
-                    <td><code>… != …</code></td>
-                </tr>
-                <tr>
-                    <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Strict_equality">一致/严格相等 (===)</a></td>
-                    <td><code>… === …</code></td>
-                </tr>
-                <tr>
-                    <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Strict_inequality">不一致/严格不相等 (!==)</a></td>
-                    <td><code>… !== …</code></td>
-                </tr>
-                <tr>
-                    <td>10</td>
-                    <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Bitwise_AND">按位与 (&amp;)</a></td>
-                    <td>从左到右</td>
-                    <td><code>… &amp; …</code></td>
-                </tr>
-                <tr>
-                    <td>9</td>
-                    <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Bitwise_XOR">按位异或 (^)</a></td>
-                    <td>从左到右</td>
-                    <td><code>… ^ …</code></td>
-                </tr>
-                <tr>
-                    <td>8</td>
-                    <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Bitwise_OR">按位或 (|)</a></td>
-                    <td>从左到右</td>
-                    <td><code>… | …</code></td>
-                </tr>
-                <tr>
-                    <td>7</td>
-                    <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Logical_AND">逻辑与 (&amp;&amp;)</a></td>
-                    <td>从左到右</td>
-                    <td><code>… &amp;&amp; …</code></td>
-                </tr>
-                <tr>
-                    <td>6</td>
-                    <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Logical_OR">逻辑或 (||)</a></td>
-                    <td>从左到右</td>
-                    <td><code>… || …</code></td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing_operator">空值合并 (??)</a></td>
-                    <td>从左到右</td>
-                    <td><code>… ?? …</code></td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Conditional_Operator">条件（三元）运算符</a></td>
-                    <td>从右到左</td>
-                    <td><code>… ? … : …</code></td>
-                </tr>
-                <tr>
-                    <td rowspan="16">3</td>
-                    <td rowspan="16"><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators#assignment_operators">赋值</a></td>
-                    <td rowspan="16">从右到左</td>
-                    <td><code>… = …</code></td>
-                </tr>
-                <tr>
-                    <td><code>… += …</code></td>
-                </tr>
-                <tr>
-                    <td><code>… -= …</code></td>
-                </tr>
-                <tr>
-                    <td><code>… **= …</code></td>
-                </tr>
-                <tr>
-                    <td><code>… *= …</code></td>
-                </tr>
-                <tr>
-                    <td><code>… /= …</code></td>
-                </tr>
-                <tr>
-                    <td><code>… %= …</code></td>
-                </tr>
-                <tr>
-                    <td><code>… &lt;&lt;= …</code></td>
-                </tr>
-                <tr>
-                    <td><code>… &gt;&gt;= …</code></td>
-                </tr>
-                <tr>
-                    <td><code>… &gt;&gt;&gt;= …</code></td>
-                </tr>
-                <tr>
-                    <td><code>… &amp;= …</code></td>
-                </tr>
-                <tr>
-                    <td><code>… ^= …</code></td>
-                </tr>
-                <tr>
-                    <td><code>… |= …</code></td>
-                </tr>
-                <tr>
-                    <td><code>… &amp;&amp;= …</code></td>
-                </tr>
-                <tr>
-                    <td><code>… ||= …</code></td>
-                </tr>
-                <tr>
-                    <td><code>… ??= …</code></td>
-                </tr>
-                <tr>
-                    <td rowspan="2">2</td>
-                    <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/yield"><code>yield</code></a></td>
-                    <td rowspan="2">从右到左</td>
-                    <td><code>yield …</code></td>
-                </tr>
-                <tr>
-                    <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/yield*"><code>yield*</code></a></td>
-                    <td><code>yield* …</code></td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Comma_Operator">逗号 / 序列</a></td>
-                    <td>从左到右</td>
-                    <td><code>… , …</code></td>
-                </tr>
-            </tbody>
-        </table>
   
 
      
      
    
+     
+   
+## 参考     
+
+  1. [从[]==![]为true来剖析JavaScript各种蛋疼的类型转换](https://segmentfault.com/a/1190000008432611)
+  
+  2. [ECMAScript® 2022 Language Specification](https://tc39.es/ecma262/#sec-intro)
+  
+  3.[ECMAScript5.1中文版，下面](http://yanhaijing.com/es5/#about)
+     
      
