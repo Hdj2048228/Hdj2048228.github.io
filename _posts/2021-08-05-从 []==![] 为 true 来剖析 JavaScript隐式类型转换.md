@@ -60,7 +60,7 @@ tags:
   
 ## 运算符的优先级
    
-   [MDN-运算符优先级](https://developer.mozilla.orghttps://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Operator_Precedence)
+   [MDN-运算符优先级](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Operator_Precedence)
    
 
    >思考1: a的值
@@ -70,10 +70,10 @@ tags:
     
     
    
-   通过 运算符优先级我们发现 **！** 的优先级是大于 **==**的
+   通过 运算符优先级我们发现 `！` 的优先级是大于 **==**的
     
    通过 [13.5.7 Logical NOT Operator ( ! )](https://tc39.es/ecma262/#sec-logical-not-operator)我们得知以下内容
-    ![Logical NOT Operator ( ! )](http://hdj2048228.github.io/img/2021-08/logincNot.png)
+    ![Logical NOT Operator ( ! )](http://hdj2048228.github.io/img/2021-08/logicNot.png)
     
 
    总结起来就是**!**  会把其后的表达式得结果转为Boolean值: 规则如下图
@@ -103,10 +103,6 @@ tags:
        if (Infinity)
        if (-Infinity)    
   
-  
-  
-  ![ToBoolean](http://hdj2048228.github.io/img/2021-08/ToBoolean.png)
-
   
   由此可得 **[] 为 true**,那么 **![]** 则为 **false**
   
