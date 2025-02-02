@@ -6,7 +6,7 @@ date:       2025-02-02
 author:     hdj
 header-img: img/bgs/girl-3.jpg
 catalog: true
-categories : [DeepSeek]
+categories : [AI, DeepSeek]
 
 tags:
     - AI
@@ -104,4 +104,8 @@ open-webui示意图
 ![change_model](http://hdj2048228.github.io/img/2025-02/change_model.png)
 
 
+now say hello world
 
+![say_hello](http://hdj2048228.github.io/img/2025-02/say_hello.png)
+
+![say_hello_comond](http://hdj2048228.github.io/img/2025-02/say_hello_commond.png)
