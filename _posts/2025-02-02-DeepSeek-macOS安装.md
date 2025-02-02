@@ -1,17 +1,19 @@
 ---
 layout:     post
-title:      国产DeekSeekMacOS安装
-subtitle:   国产DeekSeekMacOS安装
+title:      MacOS安装国产DeepSeek
+subtitle:   国产DeepSeekMacOS安装
 date:       2025-02-02
 author:     hdj
 header-img: img/bgs/girl-3.jpg
 catalog: true
-categories : [DeepSeek][AI]
+categories : [DeepSeek]
 
 tags:
     - AI
+    - DeepSeek
 ---
-苹果笔记本本地部署deepseek主要用到Ollama与open-webui
+
+苹果笔记本本地部署*deepseek*主要用到*Ollama*与open-webui
 
 ## 1. 安装Ollama
    “Ollama” 是一个轻量级的 AI 模型运行时环境（runtime），旨在简化在本地部署和使用大语言模型（LLM）的过程。它由 Vicarious 公司开发，支持多种 AI 模型（如 GPT-3、GPT-4 等），并允许用户通过简单的命令行或 API 接口与这些模型进行交互。
@@ -75,7 +77,9 @@ If Ollama is on your computer, use this command:
 
 点击复制代码，打开命令行，同样用管理员身份进行下载，即
 
-``sudo docker run -d -p 3000:8080 --add-host=host.docker.internal:host-gateway -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:main``
+```
+sudo docker run -d -p 3000:8080 --add-host=host.docker.internal:host-gateway -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:main\
+```
 
 
 
