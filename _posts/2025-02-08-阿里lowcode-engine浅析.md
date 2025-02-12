@@ -275,7 +275,7 @@ export default DjTest;
 
 [设置器扩展](https://www.yuque.com/lce/doc/cl03wo_nmhznb)
 
-```TypeScript
+```
 // DJStringSetter.tsx
 import React, { PureComponent } from 'react'; 
 import classNames from 'classnames';
