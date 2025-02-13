@@ -2,14 +2,14 @@
 layout:     post
 title:      阿里lowcode-engine浅析
 subtitle:   低代码
-date:       2025-02-07
+date:       2025-02-08
 author:     hdj
 header-img: img/bgs/girl-3.jpg
 catalog: true
-categories : [ts]
+categories : [lowcode]
 
 tags:
-- 低代码
+- lowcode
 ---
 
 **阿里lowcode-engine浅析**
