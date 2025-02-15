@@ -13,7 +13,10 @@ tags:
     - DeepSeek
 ---
 
-苹果笔记本本地部署*deepseek*主要用到*Ollama*与open-webui
+DeepSeek挺火，凑个热闹，苹果笔记本本地部署*deepseek*主要用到*Ollama*与open-webui
+最终在本地运行浏览器实现的效果如下：
+![say_hello_comond](http://hdj2048228.github.io/img/2025-02/brower_hello.png)
+
 
 ## 1. 安装Ollama
    “Ollama” 是一个轻量级的 AI 模型运行时环境（runtime），旨在简化在本地部署和使用大语言模型（LLM）的过程。它由 Vicarious 公司开发，支持多种 AI 模型（如 GPT-3、GPT-4 等），并允许用户通过简单的命令行或 API 接口与这些模型进行交互。
@@ -108,4 +111,4 @@ now say hello world
 
 ![say_hello](http://hdj2048228.github.io/img/2025-02/say_hello.png)
 
-![say_hello_comond](http://hdj2048228.github.io/img/2025-02/say_hello_commond.png)
+![say_hello_comond](http://hdj2048228.github.io/img/2025-02/say_hello_comond.png)
