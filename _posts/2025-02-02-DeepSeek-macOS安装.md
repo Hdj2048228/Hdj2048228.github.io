@@ -13,7 +13,8 @@ tags:
     - DeepSeek
 ---
 
-DeepSeek挺火，凑个热闹，苹果笔记本本地部署*deepseek*主要用到*Ollama*与open-webui
+DeepSeek挺火，凑个热闹(用的是MAC m1)，苹果笔记本本地部署*deepseek*主要用到*Ollama*与open-webui
+
 最终在本地运行浏览器实现的效果如下：
 ![say_hello_comond](http://hdj2048228.github.io/img/2025-02/brower_hello.png)
 
