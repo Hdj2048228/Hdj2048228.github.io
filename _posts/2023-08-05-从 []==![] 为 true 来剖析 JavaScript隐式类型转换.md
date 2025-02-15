@@ -2,7 +2,7 @@
 layout:     post
 title:      隐式类型转换
 subtitle:   从 ([]==![]) 为 true 来剖析 JavaScript 隐式类型转换
-date:       2021-08-05
+date:       2023-08-05
 author:     hdj
 header-img: img/bgs/girl-3.jpg
 catalog: true
@@ -745,5 +745,4 @@ tags:
   2. [ECMAScript® 2022 Language Specification](https://tc39.es/ecma262/#sec-intro)
  
   3. [ECMAScript5.1中文版，下面](http://yanhaijing.com/es5/#about)
-     
      
